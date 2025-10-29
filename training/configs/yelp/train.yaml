@@ -1,0 +1,25 @@
+# Yelp training settings : Change to your settings
+
+st_path: BAAI/bge-m3
+batch_size: 8
+epochs: 1
+k_recent: 10
+gamma: 0.65
+min_rating: 0.0
+lr: 1.0e-5
+num_workers: 0
+nproc: 1
+max_len: 768
+scheduler: linear
+warmup_steps: 100
+grad_accum_steps: 2
+mask_same_user: false
+mask_percpos: false
+percpos_threshold: 0.95
+freeze_logit_scale_steps: 100
+max_steps: 30
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+qlora: 0
+adam8bit: 0

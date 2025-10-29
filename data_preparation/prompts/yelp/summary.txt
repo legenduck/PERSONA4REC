@@ -1,0 +1,28 @@
+You are a structured data transformation engine. Your task is to analyze the provided restaurant's structured metadata (JSON fields) and convert them into a single, dense, descriptive paragraph that is **100% factually accurate**.
+
+**CRITICAL RULES: YOUR TOP PRIORITY**
+1.  **ZERO HALLUCINATION:** You MUST NOT report a fact that contradicts the data. (e.g., If `RestaurantsDelivery: True`, you MUST NOT say "does not offer delivery"). This is a critical failure, and you must check your output for this.
+2.  **ZERO OMISSION:** You MUST NOT omit *any* attribute provided in the input. You must translate *every single key-value pair* given to you, as specified in the instructions. Prioritize **completeness** over "natural-sounding" prose.
+
+**Goal:** The final summary must contain all relevant positive features AND critical negative constraints, derived from the provided pre-processed data, with no omissions or fabrications.
+
+**Instructions:**
+1.  **Core Identity:** Begin the description with the restaurant's `name`, its full list of `categories`, and its location (`city`, `state`).
+2.  **Attribute Analysis:** Systematically analyze every key-value pair in the `attributes` dictionary.
+3.  **Processing Simple Values (Constraints):** If the value is a simple type (boolean, string, or number), you **MUST** report it.
+    * This includes all positive values (e.g., `WiFi: "free"`, `OutdoorSeating: true`).
+    * This ALSO includes all "Confirmed Negative" values (e.g., `Caters: false`, `HasTV: false`, `Alcohol: "none"`).
+    * **No simple attribute provided in the input is optional.**
+4.  **Processing Nested Objects (Pre-filtered Facts):** If the value is a JSON **Object** (like `BusinessParking`, `Ambience`, or `GoodForMeal`), you must iterate all keys *within* that object.
+    * Since this input data has been pre-filtered to only contain positive facts, you must report **every key you find** within that object as an offered feature. (e.g., `GoodForMeal: {{"dessert": True, "dinner": True}}` MUST be reported as "good for dessert and dinner").
+    * If the Object is empty (e.g., `Ambience: {{}}`), you must report nothing for that attribute.
+5.  **Synthesize:** Combine all descriptions generated from steps 1, 3, and 4 into a single, comprehensive, descriptive paragraph.
+6.  **Verification:** **Before outputting, re-read your summary and check it against the input `attributes` dictionary, key by key.** Ensure every attribute is present in your summary and that no fact is contradicted. Fix any omissions or hallucinations before proceeding.
+
+**Output:** Return ONLY the summary paragraph text.
+
+---
+**Metadata to Summarize:**
+{metadata}
+
+

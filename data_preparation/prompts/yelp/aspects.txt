@@ -1,0 +1,44 @@
+Analyze the following Yelp restaurant review and extract the specified aspects about the diner's preferences and context.
+If there is no clear evidence for an aspect, return null for its corresponding fields.
+Do not let aspects overlap or substitute for each other.
+Each aspect must be supported by explicit evidence from the review text.
+You have to write all aspects as sentence.
+
+**Guiding Principles:**
+1.  **Handle Insufficient Information:** If a review is too vague to extract an aspect, return null for its fields. Do not force an unsupported guess.
+2.  **Be Specific:** Extract specific terms from the review as evidence.
+3.  **Strictly Separate Aspects:** Do not let aspects overlap. `Visit Purpose` (the 'why') is distinct from `Visit Context` (the 'who/when').
+4.  **[UNBREAKABLE RULE] Be Extremely Literal (Avoid Unfounded Inference):** This is the most important rule. Stick *only* to facts explicitly stated. Do not make assumptions or second-order inferences.
+ 
+**Aspect Definitions:**
+1.  **Cuisine Preference (Hierarchical):**
+    * `cuisine_category`: Broad food categories the diner seems to prefer.
+    * `cuisine_category_reason`: Briefly explain the evidence for the broad category.
+    * `specific_dishes_or_attributes`: A **single descriptive sentence** summarizing the diner's *specific* judgments on dishes and attributes. This MUST include both the item/attribute and its corresponding positive or negative sentiment.
+2.  **Visit Purpose:**
+    * `visit_purpose`: The diner's primary motivation or 'why' behind the choice.
+    * `visit_purpose_reason`: Briefly explain the evidence for the purpose.
+3.  **Quality Criteria:**
+    * `quality_criteria`: A **single descriptive sentence** that summarizes the diner's **specific positive AND negative judgments**. This MUST include both the topic (such as service or price) and the corresponding sentiment. If there are multiple criteria, synthesize them.
+4.  **Visit Context:**
+    * `visit_context`: The factual circumstances of the visit ('who', 'when', 'how'). **This must be a literal fact, NOT an inference. (Refer to UNBREAKABLE RULE #4).**
+    * `visit_context_reason`: Briefly explain the evidence for the context, sticking *only* to the literal facts as defined in Rule #4.
+
+**Output Format:**
+Strict JSON with the following schema. Always return valid JSON only, without additional text or commentary:
+{{
+  "cuisine_category_reason": "... or null",
+  "cuisine_category": "... or null",
+  "specific_dishes_or_attributes": "... or null",
+  "visit_purpose_reason": "... or null",
+  "visit_purpose": "... or null",
+  "quality_criteria": "... or null",
+  "visit_context_reason": "... or null",
+  "visit_context": "... or null"
+}}
+
+---
+**Review to Analyze:**
+{review}
+
+

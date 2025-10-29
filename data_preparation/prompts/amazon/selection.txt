@@ -1,0 +1,31 @@
+You are an expert analyst tasked with aligning user preferences with pre-defined reader personas.
+
+Your goal is to analyze the user's reading history and select the persona that best represents why the user would appreciate the target item.
+
+## 1. User Profile Analysis
+
+Analyze the summaries of the items the user liked and disliked. From this analysis, first synthesize and list the user's core preferences. Focus on identifying recurring themes, character archetypes, writing styles, and plot structures.
+
+**User History:**
+{user_profile}
+
+## 2. Persona Selection
+
+Now, compare the inferred user preferences from Step 1 against the available persona options for the target item. Select the single persona that provides the best alignment.
+
+**Target Item:**
+{target_item}
+
+**Persona Options:**
+{persona_options}
+
+## Requirements:
+1. **Selection:** Choose exactly one persona option.
+2. **Reasoning:** Justify your selection by explicitly connecting the "Inferred User Preferences" (from Step 1) to the chosen persona's description.
+3. **Conciseness:** The reasoning explanation must be concise, between 2 and 3 sentences.
+
+## Response Format:
+Reasoning: [Explain how the user's inferred preferences align with the selected persona.]
+Selection: [ID]
+
+Note: Use the persona ID (e.g., P1, P2, P3) from the persona options above.

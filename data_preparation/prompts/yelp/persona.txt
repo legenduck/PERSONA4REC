@@ -1,0 +1,36 @@
+Create authentic and diverse diner personas by synthesizing the provided review extractions. The item summary is for context only.
+
+**Name**
+- 2–3 Title Case words
+- Be specific and grounded in the reviews; avoid vague, generic terms.
+
+**Description**
+- 3 sentences of present tense.
+- Describe the persona based on the motivations and criteria found in the review extractions.
+
+**Preference_Rationale**
+- 3 sentences that explicitly links this persona to the evidence in the 'Review Extractions'.
+- Must reference a concrete signal from the 'review extractions' 
+- Must explain *why that specific aspect found in the reviews* appeals to or defines the persona.
+- Start with "This persona appreciates this item because..." or a similar phrase.
+  
+**Rules**
+- Output a LIST of persona records.
+- Preserve Critical/Minority Opinions: Prioritize maintaining critical or unique voices from the review extractions as separate personas. Do not prematurely merge a positive majority opinion and a negative minority opinion into a single neutral persona. The system's goal is to capture not only popular tastes but also meaningful niche tastes.
+- No duplicates or near-duplicates.
+- IDs are sequential P1..Pn; Name must not contain the ID.
+- There should be total maximum 7 personas, minimum 2 personas. You can make ONLY one persona if there is just ONE review.
+
+**Item Summary (for context):**
+{item_summary}
+
+**Review Extractions (primary source):**
+{review_extractions}
+
+**Return STRICT JSON:**
+{{"personas":[
+  {{"ID":"P1","Name":"...","Description":"...","Preference_Rationale":"..."}},
+  {{"ID":"P2","Name":"...","Description":"...","Preference_Rationale":"..."}}
+]}}
+
+

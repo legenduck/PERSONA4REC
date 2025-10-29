@@ -1,0 +1,21 @@
+# Amazon data paths (relative)
+
+data_root: ../../data
+
+# If you want to use the consolidated Book_300k dataset instead, replace these with that path
+selected: ../../data/processed/amazon/4_selected_personas.jsonl
+persona: ../../data/processed/amazon/3.5_persona_with_summary.jsonl
+loo_history: ../../data/processed/amazon/3.5_history_loo.jsonl
+
+# Optional fields for cache/rerank
+item_summary: ../../data/processed/amazon/2_summary.jsonl
+aspects: ../../data/processed/amazon/2.5_grouped.jsonl
+
+# Add candidates/gt when running rerank
+# candidates: /path/to/amazon/candidates.jsonl
+# gt: /path/to/amazon/gt.jsonl
+
+out_root: ./outputs/amazon
+
+
+

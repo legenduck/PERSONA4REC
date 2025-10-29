@@ -1,0 +1,15 @@
+# Yelp data paths (relative)
+
+data_root: ../../data
+
+selected: ../../data/processed/yelp/4_selected_personas.jsonl
+persona: ../../data/processed/yelp/3.5_persona_with_summary.jsonl
+loo_history: ../../data/processed/yelp/3.5_history_loo.jsonl
+item_summary: ../../data/processed/yelp/2_summary.jsonl
+# Use grouped aspects as Schema A aspects
+aspects: ../../data/processed/yelp/2.5_grouped.jsonl
+
+candidates: ../../evaluation/example/yelp/candidate/candidate.jsonl
+gt: ../../evaluation/example/yelp/gt/gt.jsonl
+
+out_root: ./outputs/yelp

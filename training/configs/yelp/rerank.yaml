@@ -1,0 +1,17 @@
+# Yelp rerank/cache settings
+
+mode: aspects   # aspects|summary (formerly component)
+fields: "N,D,I,R"  # persona fields for cache (N=Name, D=Description, I=item_summary, R=Preference_Rationale)
+alpha: 0.65
+user_max_k: 10
+num_gpus: 1
+
+# Optional: external caches
+use_external_caches: 0
+ext_persona_cache: ""
+ext_interaction_cache: ""
+
+
+
+
+

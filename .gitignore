@@ -1,0 +1,6 @@
+training/outputs/
+training/cache/
+**/__pycache__/
+*.pyc
+.env
+.DS_Store
